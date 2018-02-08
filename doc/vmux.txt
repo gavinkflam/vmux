@@ -1,0 +1,45 @@
+*vmux.txt*  Frictionless REPL with vim and tmux
+
+Author:  Gavin Lam <https://github.com/gavinkflam>
+License: MIT (see |LICENSE|)
+
+This plugin is only available if 'compatible' is not set.
+
+INTRODUCTION                                    *vmux*
+
+REPL anything! Dispatch commands to tmux companion pane with just two clicks.
+
+USAGES																					*vmux-usages*
+
+Add the following mappings to your .vimrc.
+
+																								*<Plug>(VmuxDispatch)*
+
+>
+  " Dispatch current line to companion pane
+	imap <M-,> <Plug>(Vmux_dispatch)
+	nmap ,, <Plug>(Vmux_dispatch)
+
+  " Dispatch selection to companion pane
+	xmap ,, <Plug>(Vmux_dispatch)
+<
+
+COMMANDS                                        *vmux-commands*
+
+These commands are only effective if you were inside a tmux session. Otherwise,
+Vmux will stop you from execution as it is nonsense.
+
+                                                *vmux-:VmuxDispatch*
+:VmuxDispatch {payload}   Dispatch the payload to the companion pane.  Vmux
+													will first load the payload into a tmux buffer.
+                          Afterwards, the tmux buffer will be pasted into the
+                          companion pane. At last, carriage return will be
+                          sent to the companion pane to execute the payload.
+
+ABOUT                                           *vmux-about*
+
+Grab the latest version or report a bug on GitHub:
+
+https://github.com/gavinkflam/vmux
+
+ vim:tw=78:et:ft=help:norl:
