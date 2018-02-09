@@ -9,7 +9,7 @@ INTRODUCTION                                    *vmux*
 
 REPL anything! Dispatch commands to tmux companion pane with just two clicks.
 
-USAGES																					*vmux-usages*
+QUICK START																		  *vmux-quick-start*
 
 Add the following mappings to your .vimrc.
 
