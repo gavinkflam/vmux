@@ -1,5 +1,5 @@
 " Execute payload in the runner pane via the tmux buffer
-function! vmux#vmux_dispatch(payload)
+function! vmux#dispatch(payload)
   " Early exit if not in tmux session
   if $TMUX == ''
     echom 'You are not in a tmux session'
@@ -29,13 +29,13 @@ function! s:get_visual_selection()
   return join(lines, "\n")
 endfunction
 
-" Command wrapper for vmux_dispatch
-command! -nargs=1 VmuxDispatch call vmux#vmux_dispatch(<f-args>)
+" Command wrapper for dispatch
+command! -nargs=1 VmuxDispatch call vmux#dispatch(<f-args>)
 
-" Key mappings for vmux_dispatch
-inoremap <silent> <Plug>(vmux_dispatch)
-  \ <C-O>:call vmux#vmux_dispatch(getline('.'))<CR>
-nnoremap <silent> <Plug>(vmux_dispatch)
-  \ :call vmux#vmux_dispatch(getline('.'))<CR>
-xnoremap <silent> <Plug>(vmux_dispatch)
-  \ :call vmux#vmux_dispatch(<SID>get_visual_selection())<CR>gv
+" Key mappings for dispatch
+inoremap <silent> <Plug>(Vmux_dispatch)
+  \ <C-O>:call vmux#dispatch(getline('.'))<CR>
+nnoremap <silent> <Plug>(Vmux_dispatch)
+  \ :call vmux#dispatch(getline('.'))<CR>
+xnoremap <silent> <Plug>(Vmux_dispatch)
+  \ :call vmux#dispatch(<SID>get_visual_selection())<CR>gv

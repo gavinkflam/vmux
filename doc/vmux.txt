@@ -13,7 +13,7 @@ USAGES																					*vmux-usages*
 
 Add the following mappings to your .vimrc.
 
-																								*<Plug>(VmuxDispatch)*
+																								*<Plug>(Vmux_dispatch)*
 
 >
   " Dispatch current line to companion pane
