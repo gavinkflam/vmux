@@ -1,3 +1,17 @@
+" Copyright (c) 2018 Gavin Lam. All rights reserved.
+"
+" This work is licensed under the terms of the MIT license.
+" For a copy, see <https://opensource.org/licenses/MIT>.
+
+" Exit when loaded already or compatible mode was set
+if exists('g:loaded_vmux') || &cp
+  finish
+endif
+
+let g:loaded_vmux = 1
+
+" Section: Exposed commands
+
 " Execute payload in the companion pane via the tmux buffer
 function! vmux#dispatch(payload)
   " Early exit if not in tmux session
@@ -25,6 +39,8 @@ endfunction
 function! vmux#dispatch_selection()
   call vmux#dispatch(s:get_visual_selection())
 endfunction
+
+" Section: Utility functions
 
 " Get text under visual selection
 " https://github.com/erig0/nc2xclip/blob/master/get_visual_selection.vim
