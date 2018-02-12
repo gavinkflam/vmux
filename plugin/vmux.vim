@@ -13,7 +13,8 @@ let g:loaded_vmux_plugin = 1
 " Section: Commands
 
 " Command wrapper for dispatch
-command! -nargs=1 VmuxDispatch call vmux#dispatch(<f-args>)
+command! -nargs=1 VmuxDispatch     call vmux#dispatch(<f-args>)
+command! -nargs=0 VmuxDispatchLast call vmux#dispatch_last()
 
 " Section: Key mappings
 
@@ -22,3 +23,8 @@ inoremap <silent> <Plug>(Vmux_dispatch) <C-O>:call vmux#dispatch_line()<CR>
 nnoremap <silent> <Plug>(Vmux_dispatch) :set opfunc=vmux#dispatch_op<CR>g@
 nnoremap <silent> <Plug>(Vmux_dispatch_line) :call vmux#dispatch_line()<CR>
 vnoremap <silent> <Plug>(Vmux_dispatch) :<C-U>call vmux#dispatch_visual()<CR>
+
+" Key mappings for dispatch_last
+inoremap <silent> <Plug>(Vmux_dispatch_last) :call vmux#dispatch_last()<CR>
+nnoremap <silent> <Plug>(Vmux_dispatch_last) :call vmux#dispatch_last()<CR>
+vnoremap <silent> <Plug>(Vmux_dispatch_last) :call vmux#dispatch_last()<CR>

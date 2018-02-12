@@ -34,6 +34,21 @@ function! vmux#dispatch(payload)
   if strridx(a:payload, "\n") != (strlen(a:payload) - 1)
     silent! call system('tmux send-keys -t + C-m')
   endif
+
+  " Save last dispatched payload
+  let s:last_dispatched_payload = a:payload
+
+  " Register repeat.vim command
+  silent! call repeat#set("\<Plug>(Vmux_dispatch_last)")
+endfunction
+
+" Dispatch last dispatched payload
+function! vmux#dispatch_last()
+  if exists('s:last_dispatched_payload')
+    call vmux#dispatch(s:last_dispatched_payload)
+  else
+    echom 'No command has been dispatched'
+  endif
 endfunction
 
 " Operation mode
