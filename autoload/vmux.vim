@@ -26,10 +26,14 @@ function! vmux#dispatch(payload)
     return
   endif
 
-  " Load argument into tmux buffer, then paste at companion pane and send return
+  " Load argument into tmux buffer, then paste at companion pane
   silent! call system('tmux loadb -', a:payload)
   silent! call system('tmux pasteb -t +')
-  silent! call system('tmux send-keys -t + C-m')
+
+  " Send carriage return only if the last character is not a newline
+  if strridx(a:payload, "\n") != (strlen(a:payload) - 1)
+    silent! call system('tmux send-keys -t + C-m')
+  endif
 endfunction
 
 " Operation mode
