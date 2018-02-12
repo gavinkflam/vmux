@@ -44,6 +44,17 @@ function! s:companion_pane_exists()
   return system('tmux display-message -p -F "#{window_panes}"') != 1
 endfunction
 
+" Check if window is zoomed
+function! s:window_zoomed()
+  return system('tmux display-message -p -F "#{window_zoomed_flag}"') == 1
+endfunction
+
+" Toogle zoom state of the current pane
+function! s:toggle_zoom_state()
+  call system('tmux resize-pane -Z ')
+  return 1
+endfunction
+
 " Spawn a companion pane with arguments configuration item,
 " without checking if runtime is in a tmux session or a companion pane exists
 function! s:spawn_companion_pane_unsafe()
@@ -56,6 +67,10 @@ endfunction
 function! s:ensure_companion_pane_presents()
   if !s:companion_pane_exists()
     call s:spawn_companion_pane_unsafe()
+  endif
+
+  if s:window_zoomed()
+    call s:toggle_zoom_state()
   endif
 
   return 1
