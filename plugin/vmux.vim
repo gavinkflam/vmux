@@ -19,5 +19,6 @@ command! -nargs=1 VmuxDispatch call vmux#dispatch(<f-args>)
 
 " Key mappings for dispatch
 inoremap <silent> <Plug>(Vmux_dispatch) <C-O>:call vmux#dispatch_line()<CR>
+nnoremap <silent> <Plug>(Vmux_dispatch_op) :set opfunc=vmux#dispatch_op<CR>g@
 nnoremap <silent> <Plug>(Vmux_dispatch) :call vmux#dispatch_line()<CR>
-xnoremap <silent> <Plug>(Vmux_dispatch) :call vmux#dispatch_selection()<CR>gv
+vnoremap <silent> <Plug>(Vmux_dispatch) :<C-U>call vmux#dispatch_visual()<CR>
