@@ -10,20 +10,75 @@ endif
 
 let g:loaded_vmux = 1
 
+" Section: Configuration items
+
+" Utility function to load configuration item or apply default if not defined
+function! s:load_config_item(name, default)
+  if !exists(a:name)
+    exec 'let ' . a:name . ' = ' .
+      \ "'" . substitute(a:default, "'", "''", "g") . "'"
+    return 1
+  endif
+  return 0
+endfunction
+
+" Argument for spawning companion pane with tmux split-window
+call s:load_config_item(
+  \ "g:vmux_companion_pane_arguments", '-h -d -p 30 -c "#{pane_current_path}"'
+\ )
+
+" Section: Utility functions
+
+" Function to check if runtime is in a tmux session, error message will be
+" printed if otherwise
+function! s:is_in_tmux()
+  if $TMUX == ''
+    echom 'You are not in a tmux session'
+    return 0
+  endif
+  return 1
+endfunction
+
+" Check if the companion pane exists
+function! s:companion_pane_exists()
+  return system('tmux display-message -p -F "#{window_panes}"') != 1
+endfunction
+
+" Spawn a companion pane with arguments configuration item,
+" without checking if runtime is in a tmux session or a companion pane exists
+function! s:spawn_companion_pane_unsafe()
+  call system('tmux split-window ' . g:vmux_companion_pane_arguments)
+  return 1
+endfunction
+
+" Ensure a companion pane exists visible, or otherwise spawn a companion pane
+" and/or exit the zoomed state
+function! s:ensure_companion_pane_presents()
+  if !s:companion_pane_exists()
+    call s:spawn_companion_pane_unsafe()
+  endif
+
+  return 1
+endfunction
+
 " Section: Exposed commands
+
+" Ensure a companion pane is present and visible
+function! vmux#bring_companion_pane()
+  " Early exit if not in tmux session
+  if !s:is_in_tmux()
+    return 0
+  endif
+
+  " Delegate to ensure companion pane presents utility function
+  return s:ensure_companion_pane_presents()
+endfunction
 
 " Execute payload in the companion pane via the tmux buffer
 function! vmux#dispatch(payload)
-  " Early exit if not in tmux session
-  if $TMUX == ''
-    echom 'You are not in a tmux session'
-    return
-  endif
-
-  " Early exit if there is only one pane
-  if system('tmux display-message -p -F "#{window_panes}"') == 1
-    echom 'There is only one pane in the current window'
-    return
+  " Bring up comapnion pane first, or otherwise eartly exit
+  if !vmux#bring_companion_pane()
+    return 0
   endif
 
   " Load argument into tmux buffer, then paste at companion pane

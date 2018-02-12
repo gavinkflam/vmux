@@ -16,6 +16,9 @@ let g:loaded_vmux_plugin = 1
 command! -nargs=1 VmuxDispatch     call vmux#dispatch(<f-args>)
 command! -nargs=0 VmuxDispatchLast call vmux#dispatch_last()
 
+" Command wrapper for bring_companion_pane
+command! -nargs=0 VmuxBringCompanionPane call vmux#bring_companion_pane()
+
 " Section: Key mappings
 
 " Key mappings for dispatch
