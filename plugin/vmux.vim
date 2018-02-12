@@ -4,11 +4,11 @@
 " For a copy, see <https://opensource.org/licenses/MIT>.
 
 " Exit when loaded already or compatible mode was set
-if exists('g:loaded_vmux') || &cp
+if exists('g:loaded_vmux_plugin') || &cp
   finish
 endif
 
-let g:loaded_vmux = 1
+let g:loaded_vmux_plugin = 1
 
 " Section: Commands
 
