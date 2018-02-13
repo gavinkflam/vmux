@@ -1,6 +1,6 @@
 # Vmux
 
-REPL anything! Dispatch commands to tmux companion pane with just two clicks.
+REPL anything! Dispatch commands to tmux companion pane without changing focus.
 
 ## Install
 
