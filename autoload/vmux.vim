@@ -62,6 +62,13 @@ function! s:spawn_companion_pane_unsafe()
   return 1
 endfunction
 
+" Send keys to companion pane,
+" without checking if runtime is in a tmux session or a companion pane exists
+function! s:send_keys_unsafe(keys)
+  call system('tmux send-keys -t + ' . a:keys)
+  return 1
+endfunction
+
 " Ensure a companion pane exists visible, or otherwise spawn a companion pane
 " and/or exit the zoomed state
 function! s:ensure_companion_pane_presents()
@@ -102,7 +109,7 @@ function! vmux#dispatch(payload)
 
   " Send carriage return only if the last character is not a newline
   if strridx(a:payload, "\n") != (strlen(a:payload) - 1)
-    silent! call system('tmux send-keys -t + C-m')
+    call s:send_keys_unsafe('C-m')
   endif
 
   " Save last dispatched payload
@@ -160,7 +167,7 @@ function! vmux#dispatch_visual()
 endfunction
 
 " Kill the companion pane
-function! vmux#kill_companion_pane()
+function! vmux#kill_pane()
   " Early exit if not in tmux session
   if !s:is_in_tmux()
     return 0
@@ -168,6 +175,19 @@ function! vmux#kill_companion_pane()
 
   " Kill the companion pane via kill-pane command
   silent! call system('tmux kill-pane -t +')
+
+  return 1
+endfunction
+
+" Clear the outputs for the companion pane
+function! vmux#clear_pane()
+  " Early exit if not in tmux session
+  if !s:is_in_tmux()
+    return 0
+  endif
+
+  " Send C-l to the companion pane
+  call s:send_keys_unsafe('C-l')
 
   return 1
 endfunction

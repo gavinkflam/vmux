@@ -13,11 +13,12 @@ let g:loaded_vmux_plugin = 1
 " Section: Commands
 
 " Command wrapper for dispatch
-command! -nargs=1 VmuxDispatch          call vmux#dispatch(<f-args>)
-command! -nargs=0 VmuxDispatchLast      call vmux#dispatch_last()
+command! -nargs=1 VmuxDispatch        call vmux#dispatch(<f-args>)
+command! -nargs=0 VmuxDispatchLast    call vmux#dispatch_last()
 
-" Command wrapper for kill companion pane
-command! -nargs=0 VmuxKillCompanionPane call vmux#kill_companion_pane()
+" Command wrapper for companion pane orchestration
+command! -nargs=0 VmuxKillPane        call vmux#kill_pane()
+command! -nargs=0 VmuxClearPane       call vmux#clear_pane()
 
 " Section: Key mappings
 
