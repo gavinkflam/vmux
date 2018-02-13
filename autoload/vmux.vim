@@ -143,14 +143,31 @@ function! vmux#dispatch_op(type, ...)
   " Restore saved state
   let &selection = sel_save
   let @@ = reg_save
+
+  return 1
 endfunction
 
 " Dispatch content under the current line
 function! vmux#dispatch_line()
   call vmux#dispatch(getline('.'))
+  return 1
 endfunction
 
 " Dispatch visual mode selection via operation mode
 function! vmux#dispatch_visual()
   call vmux#dispatch_op(visualmode(), 1)
+  return 1
+endfunction
+
+" Kill the companion pane
+function! vmux#kill_companion_pane()
+  " Early exit if not in tmux session
+  if !s:is_in_tmux()
+    return 0
+  endif
+
+  " Kill the companion pane via kill-pane command
+  silent! call system('tmux kill-pane -t +')
+
+  return 1
 endfunction
