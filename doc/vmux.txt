@@ -39,7 +39,7 @@ COMMANDS                                        *vmux-commands*
 These commands are only effective if you were inside a tmux session. Otherwise,
 Vmux will stop you from execution as it is nonsense.
 
-                                               *vmux-:VmuxDispatch*
+                                                *vmux-:VmuxDispatch*
 :VmuxDispatch {payload}   Dispatch the payload to the companion pane.
 
                           Vmux will first ensure that a companion pane exist
@@ -53,7 +53,7 @@ Vmux will stop you from execution as it is nonsense.
                           newline character, Vmux will send a carriage return
                           key to the companion pane executing the payload.
 
-                                               *vmux-:VmuxDispatchLast*
+                                                *vmux-:VmuxDispatchLast*
 :VmuxDispatchLast         Dispatch the last command to the companion pane.
 
                           Vmux will remember your last dispatched payload in
@@ -61,6 +61,9 @@ Vmux will stop you from execution as it is nonsense.
 
                           Moreover, you can use `.` command to repeat the last
                           dispatch command if you have repeat.vim installed.
+
+                                                *vmux-:VmuxKillCompanionPane*
+:VmuxKillCompanionPane    Kill the companion pane via tmux `kill-pane` command.
 
 ABOUT                                           *vmux-about*
 
