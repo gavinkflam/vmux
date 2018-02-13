@@ -30,12 +30,9 @@ nmap g,,   <Plug>(Vmux_dispatch)
 
 ## Roadmap
 
-- Implement companion window orchestration
-- Implement dispatching of last command
-- Implement repeat.vim support
 - Add screencasts
-- Work on Vader tests
-- Run tests on Travis CI
+- Add Vader test scripts
+- Add Travis CI scripts
 
 ## License
 
