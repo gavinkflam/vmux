@@ -23,8 +23,8 @@ command! -nargs=0 VmuxBringCompanionPane call vmux#bring_companion_pane()
 
 " Key mappings for dispatch
 inoremap <silent> <Plug>(Vmux_dispatch) <C-O>:call vmux#dispatch_line()<CR>
-nnoremap <silent> <Plug>(Vmux_dispatch) :set opfunc=vmux#dispatch_op<CR>g@
-nnoremap <silent> <Plug>(Vmux_dispatch_line) :call vmux#dispatch_line()<CR>
+nnoremap <silent> <Plug>(Vmux_dispatch_op) :set opfunc=vmux#dispatch_op<CR>g@
+nnoremap <silent> <Plug>(Vmux_dispatch) :call vmux#dispatch_line()<CR>
 vnoremap <silent> <Plug>(Vmux_dispatch) :<C-U>call vmux#dispatch_visual()<CR>
 
 " Key mappings for dispatch_last
