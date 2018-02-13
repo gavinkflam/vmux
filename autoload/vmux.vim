@@ -76,10 +76,8 @@ function! s:ensure_companion_pane_presents()
   return 1
 endfunction
 
-" Section: Exposed commands
-
 " Ensure a companion pane is present and visible
-function! vmux#bring_companion_pane()
+function! s:bring_companion_pane()
   " Early exit if not in tmux session
   if !s:is_in_tmux()
     return 0
@@ -89,10 +87,12 @@ function! vmux#bring_companion_pane()
   return s:ensure_companion_pane_presents()
 endfunction
 
+" Section: Exposed commands
+
 " Execute payload in the companion pane via the tmux buffer
 function! vmux#dispatch(payload)
   " Bring up comapnion pane first, or otherwise eartly exit
-  if !vmux#bring_companion_pane()
+  if !s:bring_companion_pane()
     return 0
   endif
 
