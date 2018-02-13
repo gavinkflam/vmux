@@ -62,8 +62,12 @@ Vmux will stop you from execution as it is nonsense.
                           Moreover, you can use `.` command to repeat the last
                           dispatch command if you have repeat.vim installed.
 
-                                                *vmux-:VmuxKillCompanionPane*
-:VmuxKillCompanionPane    Kill the companion pane via tmux `kill-pane` command.
+                                                *vmux-:VmuxKillPane*
+:VmuxKillPane             Kill the companion pane via tmux `kill-pane` command.
+
+                                                *vmux-:VmuxClearPane*
+:VmuxClearPane            Clear outputs of the companion pane via sending `C-l`
+                          key sequence.
 
 ABOUT                                           *vmux-about*
 
