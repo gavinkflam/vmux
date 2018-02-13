@@ -44,7 +44,7 @@ function! s:companion_pane_exists()
   return system('tmux display-message -p -F "#{window_panes}"') != 1
 endfunction
 
-" Check if window is zoomed
+" Check if the window is zoomed
 function! s:window_zoomed()
   return system('tmux display-message -p -F "#{window_zoomed_flag}"') == 1
 endfunction
@@ -121,7 +121,7 @@ function! vmux#dispatch_last()
   endif
 endfunction
 
-" Operation mode
+" Operation mode to be used with a motion / text object
 function! vmux#dispatch_op(type, ...)
   " Save selection and register state
   let sel_save = &selection
@@ -145,10 +145,12 @@ function! vmux#dispatch_op(type, ...)
   let @@ = reg_save
 endfunction
 
+" Dispatch content under the current line
 function! vmux#dispatch_line()
   call vmux#dispatch(getline('.'))
 endfunction
 
+" Dispatch visual mode selection via operation mode
 function! vmux#dispatch_visual()
   call vmux#dispatch_op(visualmode(), 1)
 endfunction
