@@ -17,12 +17,15 @@ Plug 'gavinkflam/vmux'
 Add the following mappings to your .vimrc.
 
 ```vim
+" Dispatch selection to companion pane (e.g. vipg,)
+xmap g,    <Plug>(Vmux_dispatch)
+
+" Start Vmux for a motion / text object (e.g. g,ip)
+nmap g,    <Plug>(Vmux_dispatch)
+
 " Dispatch current line to companion pane
 imap <M-,> <Plug>(Vmux_dispatch)
-nmap ,, <Plug>(Vmux_dispatch)
-
-" Dispatch selection to companion pane
-xmap ,, <Plug>(Vmux_dispatch)
+nmap g,,   <Plug>(Vmux_dispatch_line)
 ```
 
 ## Roadmap
