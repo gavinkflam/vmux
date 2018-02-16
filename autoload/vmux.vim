@@ -114,8 +114,8 @@ function! vmux#dispatch(payload)
   endif
 
   " Load argument into tmux buffer, then paste at companion pane
-  silent! call system('tmux loadb -b ' . g:vmux#buffer_name . ' -', a:payload)
-  silent! call system('tmux pasteb -t + -b ' . g:vmux#buffer_name)
+  call system('tmux loadb -b ' . g:vmux#buffer_name . ' -', a:payload)
+  call system('tmux pasteb -t + -b ' . g:vmux#buffer_name)
 
   " Send carriage return only if the last character is not a newline
   if strridx(a:payload, "\n") != (strlen(a:payload) - 1)
@@ -184,7 +184,7 @@ function! vmux#kill_pane()
   endif
 
   " Kill the companion pane via kill-pane command
-  silent! call system('tmux kill-pane -t +')
+  call system('tmux kill-pane -t +')
 
   return 1
 endfunction
