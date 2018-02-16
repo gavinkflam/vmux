@@ -28,6 +28,20 @@ imap <M-,> <Plug>(Vmux_dispatch)
 nmap g,,   <Plug>(Vmux_dispatch)
 ```
 
+## Other Useful Commands
+
+`:VmuxClearPane` clear outputs of the companion pane by sending ctrl-L key
+sequence.
+
+`:VmuxKillPane` kills the companion pane via tmux `kill-pane` command.
+
+`:VmuxDispatchLast` dispatch the last command to the companion pane.
+
+## repeat.vim support
+
+`g,`, `g,,` and `Alt-,` works with
+[repeat.vim](https://github.com/tpope/vim-repeat) if you have it installed.
+
 ## Roadmap
 
 - Add screencasts
