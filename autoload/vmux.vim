@@ -23,6 +23,10 @@ function! s:load_config_item(name, default)
 endfunction
 
 " Argument for spawning companion pane with tmux split-window
+" -h                        -- split a vertical pane utilizing wide screens
+" -d                        -- split without changing focus
+" -p 30                     -- split a pane with 30% the screen width
+" -c "#{pane_current_path}" -- starting with the current path of the pane
 call s:load_config_item(
   \ "g:vmux#companion_pane_arguments", '-h -d -p 30 -c "#{pane_current_path}"'
 \ )

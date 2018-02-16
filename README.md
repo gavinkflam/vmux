@@ -55,11 +55,8 @@ sequence.
 
 You can change the default arguments for launching the tmux companion pane.
 
-The default arguments aim at utilizing width of screen spaces and prevent
-interuption of the flow.
-
-It will split a vertical pane of 30% the screen width without changing focus.
-Moreover, starting with the current path of the pane running vim.
+The default arguments aim at utilizing wide screen and prevent interuption
+of the flow.
 
 You can refer to the example below.
 
