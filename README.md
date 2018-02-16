@@ -8,9 +8,10 @@ Use your favourite plugin manager to install Vmux.
 
 If you don't have an idea, I recommend [vim-plug](https://github.com/junegunn/vim-plug).
 
-```vim
-Plug 'gavinkflam/vmux'
-```
+- [vim-plug](https://github.com/junegunn/vim-plug)
+  - `Plug 'gavinkflam/vmux'`
+- [Pathogen](https://github.com/tpope/vim-pathogen)
+  - `git clone https://github.com/gavinkflam/vmux ~/.vim/bundle/vmux`
 
 ## Quick Start
 
