@@ -49,6 +49,23 @@ sequence.
 - Add Vader test scripts
 - Add Travis CI scripts
 
+## FAQ
+
+### How to customize the companion pane?
+
+You can change the default arguments for launching the tmux companion pane.
+
+You can refer to the example below.
+
+```vim
+let g:vmux#companion_pane_arguments = '-h -d -p 30 -c "#{pane_current_path}"'
+```
+
+## Acknowledgement
+
+Thanks my colleague [Loki Ng](http://lokikl.com/) for the initial idea and
+implementation via xclip.
+
 ## License
 
 MIT
