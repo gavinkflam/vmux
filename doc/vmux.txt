@@ -7,7 +7,7 @@ This plugin is only available if 'compatible' is not set.
 
 INTRODUCTION                                    *vmux*
 
-REPL anything! Dispatch commands to tmux companion pane with just two clicks.
+REPL anything! Dispatch commands to tmux companion pane without changing focus.
 
 QUICK START                                     *vmux-quick-start*
 
