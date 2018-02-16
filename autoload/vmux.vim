@@ -31,7 +31,8 @@ call s:load_config_item(
   \ "g:vmux#companion_pane_arguments", '-h -d -p 30 -c "#{pane_current_path}"'
 \ )
 
-" Name for tmux buffer to transfer payload, default to _vmux
+" Name for tmux buffer to transfer payload, default to '_vmux'.
+" Purpose of a named buffer is to prevent polutting the default tmux buffer.
 call s:load_config_item(
   \ "g:vmux#buffer_name", '_vmux'
 \ )
