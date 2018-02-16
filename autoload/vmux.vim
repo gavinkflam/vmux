@@ -31,6 +31,11 @@ call s:load_config_item(
   \ "g:vmux#companion_pane_arguments", '-h -d -p 30 -c "#{pane_current_path}"'
 \ )
 
+" Name for tmux buffer to transfer payload, default to _vmux
+call s:load_config_item(
+  \ "g:vmux#buffer_name", '_vmux'
+\ )
+
 " Section: Utility functions
 
 " Function to check if runtime is in a tmux session, error message will be
@@ -108,8 +113,8 @@ function! vmux#dispatch(payload)
   endif
 
   " Load argument into tmux buffer, then paste at companion pane
-  silent! call system('tmux loadb -', a:payload)
-  silent! call system('tmux pasteb -t +')
+  silent! call system('tmux loadb -b ' . g:vmux#buffer_name . ' -', a:payload)
+  silent! call system('tmux pasteb -t + -b ' . g:vmux#buffer_name)
 
   " Send carriage return only if the last character is not a newline
   if strridx(a:payload, "\n") != (strlen(a:payload) - 1)
