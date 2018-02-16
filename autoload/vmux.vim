@@ -24,7 +24,7 @@ endfunction
 
 " Argument for spawning companion pane with tmux split-window
 call s:load_config_item(
-  \ "g:vmux_companion_pane_arguments", '-h -d -p 30 -c "#{pane_current_path}"'
+  \ "g:vmux#companion_pane_arguments", '-h -d -p 30 -c "#{pane_current_path}"'
 \ )
 
 " Section: Utility functions
@@ -58,7 +58,7 @@ endfunction
 " Spawn a companion pane with arguments configuration item,
 " without checking if runtime is in a tmux session or a companion pane exists
 function! s:spawn_companion_pane_unsafe()
-  call system('tmux split-window ' . g:vmux_companion_pane_arguments)
+  call system('tmux split-window ' . g:vmux#companion_pane_arguments)
   return 1
 endfunction
 
