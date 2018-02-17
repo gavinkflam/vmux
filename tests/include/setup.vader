@@ -5,14 +5,17 @@ Execute (Prepare for tests):
   if !exists('g:loaded_vmux')
     let plugin_dir = fnamemodify(g:vader_file, ':p:h:h')
     let &runtimepath .= ',' . plugin_dir
-    exe 'source ' . plugin_dir . '/plugin/vmux.vim'
+    exec 'source ' . plugin_dir . '/plugin/vmux.vim'
   endif
 
+  " Clean up tests directory to prevent wrong assertion
+  call system('rm -rf /tmp/vmux_tests')
+
   " Create the tests directory if not exists
-  call system('mkdir -p /tmp/vmux_tests')
+  call system('mkdir /tmp/vmux_tests')
 
   " Load the utility functions
-  exe 'source ' . fnamemodify(g:vader_file, ':p:h') . '/include/utils.vim'
+  exec 'source ' . fnamemodify(g:vader_file, ':p:h') . '/include/utils.vim'
 
 Before:
 After:
