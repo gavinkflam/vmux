@@ -1,0 +1,13 @@
+Include: include/setup.vader
+
+Execute (Test VmuxDispatch command):
+  let fname   = 'test_vmux_dispatch_command'
+  let command = 'echo "42" > "/tmp/vmux_tests/' . fname . '"'
+
+  " Dispatch command writing to temporary file
+  exec 'VmuxDispatch ' . command
+
+  " Assert if the file content is as expected
+  exec 'AssertFileEq ' . fname . ' 42'
+
+Include: include/teardown.vader

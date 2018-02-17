@@ -1,0 +1,19 @@
+" Setup before executing any tests
+
+Execute (Prepare for tests):
+  " When running a .vader file manually, without vmux being loaded
+  if !exists('g:loaded_vmux')
+    let plugin_dir = fnamemodify(g:vader_file, ':p:h:h')
+    let &runtimepath .= ',' . plugin_dir
+    exe 'source ' . plugin_dir . '/plugin/vmux.vim'
+  endif
+
+  " Create the tests directory if not exists
+  call system('mkdir -p /tmp/vmux_tests')
+
+  " Load the utility functions
+  exe 'source ' . fnamemodify(g:vader_file, ':p:h') . '/include/utils.vim'
+
+Before:
+After:
+Given:

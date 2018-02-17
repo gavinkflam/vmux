@@ -1,0 +1,9 @@
+" Cleanup after executing all tests
+
+Given:
+Execute (Cleanup tests environment):
+  " Kill the companion pane after tests
+  VmuxKillPane
+
+  " Clean up tests directory to prevent wrong assertion
+  call system('rm -rf /tmp/vmux_tests')
