@@ -1,0 +1,14 @@
+Include: include/setup.vader
+
+Given (Test normal mode dispatch line):
+  echo -n "50" > "/tmp/vmux_tests/test_normal_mode_dispatch_line"
+  echo -n "51" > "/tmp/vmux_tests/test_normal_mode_dispatch_line"
+  echo -n "52" > "/tmp/vmux_tests/test_normal_mode_dispatch_line"
+
+Do (Do dispatch second line in normal mode):
+  jg,,
+
+Execute (Assert test normal mode dispatch line result):
+  AssertFileEq test_normal_mode_dispatch_line 51
+
+Include: include/teardown.vader

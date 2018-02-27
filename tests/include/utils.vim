@@ -3,7 +3,7 @@
 " Utility function to assert whether a test file contains the expected content
 function! s:assert_file_eq(fname, content)
   " Sleep briefly waiting for dispatched command to finish
-  sleep 100m
+  sleep 200m
 
   " Assemble shell script snippet for asserting the file content
   let l:command =

@@ -17,6 +17,12 @@ Execute (Prepare for tests):
   " Load the utility functions
   exec 'source ' . fnamemodify(g:vader_file, ':p:h') . '/include/utils.vim'
 
+  " Add key mappings for test cases
+  xmap g,    <Plug>(Vmux_dispatch)
+  nmap g,    <Plug>(Vmux_dispatch_op)
+  imap <M-,> <Plug>(Vmux_dispatch)
+  nmap g,,   <Plug>(Vmux_dispatch)
+
 Before:
 After:
 Given:
